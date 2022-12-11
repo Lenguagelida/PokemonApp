@@ -1,24 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
+import 'bootswatch/dist/litera/bootstrap.min.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+import Navbar from './components/Navbar';
+import Landing from './components/Landing';
+import Footer from "./components/Footer";
+import PokemonContainer from './components/PokemonContainer';
+import Items from './components/Items';
+import Contacto from './components/Contacto';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  return(
+    <BrowserRouter>
+      <Navbar/>
+        <Routes>
+          <Route exact path='/' element={<Landing/>}/>
+          <Route exact path='/pokemons/' element={<PokemonContainer/>}/>
+          <Route exact path='/items/' element={<Items/>}/>
+          <Route exact path='contacto/'element={<Contacto/>}/>
+        </Routes>
+        <Footer/>
+    </BrowserRouter>
   );
 }
 
